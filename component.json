@@ -1,6 +1,6 @@
 {
   "name": "date-picker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Date-picker for inputs that uses the calendar component",
   "scripts": ["index.js"],
   "dependencies": {
