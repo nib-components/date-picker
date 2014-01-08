@@ -92,10 +92,9 @@ _.extend(DatePicker.prototype, Backbone.Events, {
   _onClick: function(event) {
     event.stopPropagation();
 
-    // if theres entered value in the textfield, use it to define the selected day
+    // if theres entered value in the textfield, call _setValue()
     if(this._input.val()){
-      var fieldValue = moment(this._input.val(), "DDMMYYYY");
-      this.calendar.select(fieldValue);
+      this._setValue();
     }
 
     this.show();
@@ -105,8 +104,13 @@ _.extend(DatePicker.prototype, Backbone.Events, {
   // is no input specified this event won't ever fire.
   _onKeyUp: function() {
     this.hide();
-  }
+  },
 
+  // Pass the value through to the calendar to select the specific date
+  _setValue: function(){
+    var fieldValue = moment(this._input.val(), "DDMMYYYY");
+    this.calendar.select(fieldValue);
+  }
 });
 
 module.exports = DatePicker;
