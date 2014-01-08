@@ -59,6 +59,12 @@ _.extend(DatePicker.prototype, Backbone.Events, {
   show: function(){
     $(document).on('click', this.hide);
 
+    // if theres entered value in the textfield, use it to define the selected day
+    if(this._input.val()){
+      var fieldValue = moment(this._input.val(), "DDMMYYYY");
+      this.calendar.select(fieldValue);
+    }
+
     // When clicking on the calendar itself, we don't want
     // to close it, we so stop the event from bubbling up. This
     // lets the calendar close when clicking outside of the element
