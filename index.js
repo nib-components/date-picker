@@ -1,5 +1,6 @@
 var Calendar = require('calendar');
 var Popover = require('popover');
+var moment = require('moment');
 
 var DatePicker = function(options){
   _.bindAll(this, 'hide', 'show', '_onKeyUp', '_onClick');
@@ -59,12 +60,6 @@ _.extend(DatePicker.prototype, Backbone.Events, {
   show: function(){
     $(document).on('click', this.hide);
 
-    // if theres entered value in the textfield, use it to define the selected day
-    if(this._input.val()){
-      var fieldValue = moment(this._input.val(), "DDMMYYYY");
-      this.calendar.select(fieldValue);
-    }
-
     // When clicking on the calendar itself, we don't want
     // to close it, we so stop the event from bubbling up. This
     // lets the calendar close when clicking outside of the element
@@ -96,6 +91,13 @@ _.extend(DatePicker.prototype, Backbone.Events, {
   // for the date picker
   _onClick: function(event) {
     event.stopPropagation();
+
+    // if theres entered value in the textfield, use it to define the selected day
+    if(this._input.val()){
+      var fieldValue = moment(this._input.val(), "DDMMYYYY");
+      this.calendar.select(fieldValue);
+    }
+
     this.show();
   },
 
