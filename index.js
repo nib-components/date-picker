@@ -3,7 +3,7 @@ var Popover = require('popover');
 var moment = require('moment');
 
 var DatePicker = function(options){
-  _.bindAll(this, 'hide', 'show', '_onKeyUp', '_onClick', '_onBlur');
+  _.bindAll(this, 'hide', 'show', '_onKeyUp', '_onClick');
 
   var el = this.el = $(options.el);
 
@@ -40,7 +40,6 @@ var DatePicker = function(options){
 
   if( this._input ) {
     this._input.on('keyup', this._onKeyUp);
-    this._input.on('blur', this._onBlur);
   }
 };
 
@@ -104,11 +103,6 @@ _.extend(DatePicker.prototype, Backbone.Events, {
   // On keyup in the input we'll close the picker. Note: if there
   // is no input specified this event won't ever fire.
   _onKeyUp: function() {
-    this.hide();
-  },
-
-  // On blur in the input we'll close the picker.
-  _onBlur: function(e){
     this.hide();
   },
 
