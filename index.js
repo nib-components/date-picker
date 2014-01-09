@@ -108,8 +108,10 @@ _.extend(DatePicker.prototype, Backbone.Events, {
 
   // Pass the value through to the calendar to select the specific date
   _setValue: function(){
-    var fieldValue = moment(this._input.val(), "DDMMYYYY");
-    this.calendar.select(fieldValue);
+    var fieldValue = moment(this._input.val(), "DD/MM/YYYY");
+    if (fieldValue.isValid()) {
+      this.calendar.select(fieldValue);
+    }
   }
 });
 
