@@ -1,10 +1,10 @@
 {
   "name": "date-picker",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Date-picker for inputs that uses the calendar component",
   "scripts": ["index.js"],
   "dependencies": {
-    "nib-components/calendar": "0.0.2",
+    "nib-components/calendar": "0.0.3",
     "nib-components/popover": "0.0.1",
     "nib-components/moment": "develop"
   }
